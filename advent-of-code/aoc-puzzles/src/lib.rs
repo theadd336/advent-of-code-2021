@@ -1,3 +1,4 @@
+use std::fmt;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Error, Lines};
 
@@ -21,9 +22,34 @@ pub enum PuzzleError {
     DataFileError(#[from] Error),
     #[error("Data consistency error found in day {day:?}, puzzle {puzzle:?}. Expected {expected:?}, found {found:?}")]
     DataConsistencyError {
-        day: u8,
-        puzzle: u8,
+        day: Day,
+        puzzle: Puzzle,
         expected: String,
         found: String,
     },
+}
+
+#[derive(Debug, Clone, Copy)]
+pub enum Day {
+    One = 1,
+    Two,
+    Three,
+}
+
+impl fmt::Display for Day {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", *self as u8)
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
+pub enum Puzzle {
+    One = 1,
+    Two = 2,
+}
+
+impl fmt::Display for Puzzle {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", *self as u8)
+    }
 }

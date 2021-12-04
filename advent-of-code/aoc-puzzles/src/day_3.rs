@@ -1,33 +1,30 @@
 use std::io::Error;
 
-use crate::{create_data_iter, PuzzleError};
+use crate::{create_data_iter, Day, Puzzle, PuzzleError};
 
 const DIAGNOSTICS_FILE: &str = "day_3/diagnostic.txt";
-const DAY: u8 = 3;
+const DAY: Day = Day::Three;
 
 pub fn puzzle_one() -> Result<(), PuzzleError> {
-    const PUZZLE: u8 = 1;
-    println!("Starting day {}, puzzle {}", DAY, PUZZLE);
+    println!("Starting day {}, puzzle {}", DAY, Puzzle::One);
     let diagnostics_input = create_data_iter(DIAGNOSTICS_FILE)?;
     let (gamma, epsilon, product) = puzzle_one_impl(diagnostics_input)?;
     println!(
         "gamma: {}, epsilon: {}, product: {}",
         gamma, epsilon, product
     );
-    println!("Finished day {}, puzzle {}", DAY, PUZZLE);
+    println!("Finished day {}, puzzle {}", DAY, Puzzle::One);
     Ok(())
 }
 
 pub fn puzzle_two() -> Result<(), PuzzleError> {
-    const PUZZLE: u8 = 2;
-    println!("Starting day {}, puzzle {}", DAY, PUZZLE);
+    println!("Starting day {}, puzzle {}", DAY, Puzzle::Two);
     Ok(())
 }
 
 fn puzzle_one_impl(
     diagnostic_input: impl Iterator<Item = Result<String, Error>>,
 ) -> Result<(u32, u32, u32), PuzzleError> {
-    const PUZZLE: u8 = 1;
     let mut bit_counts: Vec<u32> = vec![];
     let mut num_bytes: u32 = 0;
     for byte in diagnostic_input {
@@ -44,7 +41,7 @@ fn puzzle_one_impl(
                 _ => {
                     return Err(PuzzleError::DataConsistencyError {
                         day: DAY,
-                        puzzle: PUZZLE,
+                        puzzle: Puzzle::One,
                         expected: "Bit must be either 1 or 0".to_string(),
                         found: bit.to_string(),
                     });

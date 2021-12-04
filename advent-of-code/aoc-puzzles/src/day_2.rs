@@ -1,22 +1,20 @@
 use std::io::Error;
 
-use crate::{create_data_iter, PuzzleError};
+use crate::{create_data_iter, Day, Puzzle, PuzzleError};
 
 const DIRECTIONS_FILE: &str = "day_2/directions.txt";
-const DAY: u8 = 2;
+const DAY: Day = Day::Two;
 
 pub fn puzzle_one() -> Result<(), PuzzleError> {
-    const PUZZLE: u8 = 1;
-    println!("Starting day {}, puzzle {}", DAY, PUZZLE);
+    println!("Starting day {}, puzzle {}", DAY, Puzzle::One);
     let directions_input_iter = create_data_iter(DIRECTIONS_FILE)?;
     let result = puzzle_one_impl(directions_input_iter);
-    println!("Finished day {}, puzzle {}", DAY, PUZZLE);
+    println!("Finished day {}, puzzle {}", DAY, Puzzle::One);
     result
 }
 
 pub fn puzzle_two() -> Result<(), PuzzleError> {
-    const PUZZLE: u8 = 2;
-    println!("Starting day {}, puzzle {}", DAY, PUZZLE);
+    println!("Starting day {}, puzzle {}", DAY, Puzzle::Two);
     let directions_input_iter = create_data_iter(DIRECTIONS_FILE)?;
     let result = puzzle_two_impl(directions_input_iter);
     let (horizontal_position, vertical_position, position_product) = result?;
@@ -24,14 +22,13 @@ pub fn puzzle_two() -> Result<(), PuzzleError> {
         "horizontal position: {}, vertical position: {}, position product: {}",
         horizontal_position, vertical_position, position_product
     );
-    println!("Finished day {}, puzzle {}", DAY, PUZZLE);
+    println!("Finished day {}, puzzle {}", DAY, Puzzle::Two);
     Ok(())
 }
 
 fn puzzle_one_impl(
     directions_input_iter: impl Iterator<Item = Result<String, Error>>,
 ) -> Result<(), PuzzleError> {
-    const PUZZLE: u8 = 1;
     let mut horizontal_position = 0;
     let mut vertical_position = 0;
     for direction_input in directions_input_iter {
@@ -40,7 +37,7 @@ fn puzzle_one_impl(
         if direction_pair.len() != 2 {
             return Err(PuzzleError::DataConsistencyError {
                 day: DAY,
-                puzzle: PUZZLE,
+                puzzle: Puzzle::One,
                 expected: "directions to have exactly direction and distance".to_string(),
                 found: format!("{:?}", direction_pair),
             });
@@ -51,7 +48,7 @@ fn puzzle_one_impl(
             .parse::<i32>()
             .map_err(|_| PuzzleError::DataConsistencyError {
                 day: DAY,
-                puzzle: PUZZLE,
+                puzzle: Puzzle::One,
                 expected: "distance must be a valid integer".to_string(),
                 found: distance.to_string(),
             })?;
@@ -65,7 +62,7 @@ fn puzzle_one_impl(
             _ => {
                 return Err(PuzzleError::DataConsistencyError {
                     day: DAY,
-                    puzzle: PUZZLE,
+                    puzzle: Puzzle::One,
                     expected: "direction must be one of up, down, forward, backward".to_string(),
                     found: direction.to_string(),
                 })
@@ -84,7 +81,6 @@ fn puzzle_one_impl(
 fn puzzle_two_impl(
     directions_input_iter: impl Iterator<Item = Result<String, Error>>,
 ) -> Result<(i32, i32, i32), PuzzleError> {
-    const PUZZLE: u8 = 2;
     let mut horizontal_position = 0;
     let mut vertical_position = 0;
     let mut aim = 0;
@@ -94,7 +90,7 @@ fn puzzle_two_impl(
         if direction_pair.len() != 2 {
             return Err(PuzzleError::DataConsistencyError {
                 day: DAY,
-                puzzle: PUZZLE,
+                puzzle: Puzzle::Two,
                 expected: "directions to have exactly direction and distance".to_string(),
                 found: format!("{:?}", direction_pair),
             });
@@ -105,7 +101,7 @@ fn puzzle_two_impl(
             .parse::<i32>()
             .map_err(|_| PuzzleError::DataConsistencyError {
                 day: DAY,
-                puzzle: PUZZLE,
+                puzzle: Puzzle::Two,
                 expected: "distance must be a valid integer".to_string(),
                 found: distance.to_string(),
             })?;
@@ -121,7 +117,7 @@ fn puzzle_two_impl(
             _ => {
                 return Err(PuzzleError::DataConsistencyError {
                     day: DAY,
-                    puzzle: PUZZLE,
+                    puzzle: Puzzle::Two,
                     expected: "direction must be one of up, down, forward, backward".to_string(),
                     found: direction.to_string(),
                 })
