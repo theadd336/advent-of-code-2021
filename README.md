@@ -1,5 +1,4 @@
 # Advent of Code 2021 Puzzle Implementations
----
 Implementations for solutions to the 2021 Advent of Code puzzles. 
 
 ## Running
