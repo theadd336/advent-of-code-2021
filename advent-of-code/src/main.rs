@@ -1,4 +1,4 @@
-use aoc_puzzles::{day_1, day_2, day_3, Day, Puzzle};
+use aoc_puzzles::{day_1, day_2, day_3, day_4, Day, Puzzle};
 
 fn main() {
     let result = day_1::puzzle_one();
@@ -11,5 +11,15 @@ fn main() {
         "Day {}, puzzle {} failed!",
         Day::Three,
         Puzzle::One
+    ));
+    day_4::puzzle_one().expect(&format!(
+        "Day {}, puzzle {} failed!",
+        Day::Four,
+        Puzzle::One
+    ));
+    day_4::puzzle_two().expect(&format!(
+        "Day {}, puzzle {} failed!",
+        Day::Four,
+        Puzzle::Two
     ));
 }

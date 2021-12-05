@@ -7,6 +7,7 @@ use thiserror::Error;
 pub mod day_1;
 pub mod day_2;
 pub mod day_3;
+pub mod day_4;
 
 fn create_data_iter(relative_file_path: &str) -> Result<Lines<BufReader<File>>, Error> {
     let absolute_file_path =
@@ -27,6 +28,8 @@ pub enum PuzzleError {
         expected: String,
         found: String,
     },
+    #[error("No solution was found")]
+    NoSolutionFound,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -34,6 +37,7 @@ pub enum Day {
     One = 1,
     Two,
     Three,
+    Four,
 }
 
 impl fmt::Display for Day {
