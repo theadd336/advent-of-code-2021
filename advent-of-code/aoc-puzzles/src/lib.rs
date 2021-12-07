@@ -41,6 +41,7 @@ pub enum Day {
     Three,
     Four,
     Five,
+    Six,
 }
 
 impl fmt::Display for Day {
