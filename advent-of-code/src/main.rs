@@ -27,4 +27,9 @@ fn main() {
         Day::Five,
         Puzzle::One
     ));
+    day_5::puzzle_two().expect(&format!(
+        "Day {}, puzzle {} failed!",
+        Day::Five,
+        Puzzle::Two
+    ));
 }
