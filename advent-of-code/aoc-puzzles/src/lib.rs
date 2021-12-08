@@ -10,6 +10,7 @@ pub mod day_3;
 pub mod day_4;
 pub mod day_5;
 pub mod day_6;
+pub mod day_7;
 
 fn create_data_iter(relative_file_path: &str) -> Result<Lines<BufReader<File>>, Error> {
     let absolute_file_path =
@@ -42,6 +43,7 @@ pub enum Day {
     Four,
     Five,
     Six,
+    Seven,
 }
 
 impl fmt::Display for Day {
