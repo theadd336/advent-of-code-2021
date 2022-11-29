@@ -5,6 +5,7 @@ use std::io::{BufRead, BufReader, Error, Lines};
 use thiserror::Error;
 
 pub mod day_1;
+pub mod day_10;
 pub mod day_2;
 pub mod day_3;
 pub mod day_4;
@@ -46,6 +47,8 @@ pub enum Day {
     Six,
     Seven,
     Eight,
+    Nine,
+    Ten,
 }
 
 impl fmt::Display for Day {
