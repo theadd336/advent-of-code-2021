@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "aoc-codegen",
+    "advent-of-code",
+    "advent-of-code/aoc-puzzles",
+]
