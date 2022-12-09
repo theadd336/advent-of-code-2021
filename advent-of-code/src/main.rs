@@ -51,6 +51,7 @@ fn main() {
         4 => day_4::Solver::new(),
         5 => day_5::Solver::new(),
         6 => day_6::Solver::new(),
+        7 => day_7::Solver::new(),
         _ => panic!("Unsupported test day"),
     };
 
