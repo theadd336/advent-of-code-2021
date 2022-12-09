@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::mem;
 
 use crate::{Part, Puzzle, PuzzleError};
@@ -15,7 +14,7 @@ impl TerminalParser {
         if new_dir == ".." {
             if self.directory_stack.len() > 0 {
                 let (parent_dir, parent_size) = self.directory_stack.pop().unwrap();
-                let old_working_dir = self.working_dir.replace(parent_dir).unwrap();
+                self.working_dir = Some(parent_dir);
                 let old_size = mem::replace(&mut self.working_size, parent_size);
                 self.working_size += old_size;
                 self.sizes.push(old_size);
@@ -131,8 +130,6 @@ impl Puzzle for Solver {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    use std::fs::File;
     use std::io::{BufRead, BufReader};
 
     fn get_test_input() -> impl BufRead {
