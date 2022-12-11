@@ -8,6 +8,7 @@ pub mod day_5;
 pub mod day_6;
 pub mod day_7;
 pub mod day_8;
+pub mod day_9;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Part {
@@ -26,6 +27,8 @@ pub enum PuzzleError {
     },
     #[error("No solution was found")]
     NoSolutionFound,
+    #[error("Failed to parse line: {0}")]
+    ParseError(String),
 }
 
 pub trait Puzzle {
